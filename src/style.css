@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::after {
+  box-sizing: border-box;
+}
+*::before {
+  box-sizing: border-box;
+}
+#html {
+  word-break: break-all; /*css代码自动换行*/
+  overflow: auto;
+}
+#div1 {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+}
+/*用css在div的第一个子元素加1，最后一个子元素加2;css可以加元素，是伪元素，相当于加了span*/
+#div1::before {
+  content: ""; /*content不能删，删了就没有span*/
+  display: block;
+  /* border: 1px solid red; */
+  position: absolute;
+}
+
+#div1::after {
+  content: "";
+  display: block;
+  /* border: 1px solid red; */
+  position: absolute;
+}
+
+@media (max-width: 500px) {
+  /*媒体查询，如果宽度<500，就认为它是手机，弄成代码在上，图在下，分别为50%vh*/
+  #html {
+    height: 50vh;
+  }
+  #div1Wrapper {
+    height: 50vh;
+  }
+  #div1 {
+    position: relative;
+    top: 25%; /*调整手机端太极的位置*/
+    right: 50%;
+  }
+}
